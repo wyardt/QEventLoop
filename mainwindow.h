@@ -21,6 +21,8 @@ private slots:
 
     void on_feedBtn_clicked();
 
+    void on_btnClear_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool flag = false;

@@ -20,13 +20,13 @@ void MainWindow::on_runBtn_clicked()
     connect(timerRun, SIGNAL(timeout()), &loop, SLOT(quit()));
     connect(this, SIGNAL(feedBtnPressed()), &loop, SLOT(quit()));
     timerRun->stop();
-    timerRun->start(5000);
+    timerRun->start(ui->nTimeout->value() * 1000);
     ui->plainTextEdit->appendPlainText("timer starts");
     loop.exec(/* QEventLoop::ExcludeUserInputEvents */);
     if (flag != false)
     {
         flag = false;
-        ui->plainTextEdit->appendPlainText("feed");
+        ui->plainTextEdit->appendPlainText("fed, timer stops");
     }
     else
     {
@@ -38,4 +38,10 @@ void MainWindow::on_feedBtn_clicked()
 {
     flag = true;
     emit feedBtnPressed();
+}
+
+
+void MainWindow::on_btnClear_clicked()
+{
+    ui->plainTextEdit->clear();
 }
